@@ -17,26 +17,25 @@ from django.contrib import admin
 from django.conf.urls import url
 from django.conf.urls import include
 from django.conf import settings
-from ProyectoRyvatecApp.views import Login
-from ProyectoRyvatecApp.views import Logout
-from ProyectoRyvatecApp.views import Home
-from ProyectoRyvatecApp.views import Proveedores
-from ProyectoRyvatecApp.views import Tecnicos
-from ProyectoRyvatecApp.views import QuienesSomos
-from ProyectoRyvatecApp.views import AdicionarUsuario
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-
+from apps.ProyectoRyvatecApp.views import Login
+from apps.ProyectoRyvatecApp.views import Logout
+from apps.ProyectoRyvatecApp.views import Home
+from apps.ProyectoRyvatecApp.views import Proveedores
+from apps.ProyectoRyvatecApp.views import Tecnicos
+from apps.ProyectoRyvatecApp.views import QuienesSomos
+from apps.ProyectoRyvatecApp.views import AdicionarUsuario
 
 urlpatterns = [
     url('admin/', admin.site.urls),
     url(r'^$', Home.as_view(), name='home'),
     url(r'^login/', Login.as_view(), name='login'),
     url(r'^logout/', Logout.as_view(), name='logout'),
-    url(r'^administrador/', include('administrador.urls', namespace='administrador')),
-    url(r'^proveedor/', include('proveedor.urls', namespace='proveedor')),
-    url(r'^tecnico/', include('tecnico.urls', namespace='tecnico')),
-    # url(r'^cliente/', include('cliente.urls', namespace='cliente')),
+    url(r'^administrador/', include('apps.administrador.urls', namespace='administrador')),
+    url(r'^proveedor/', include('apps.proveedor.urls', namespace='proveedor')),
+    url(r'^tecnico/', include('apps.tecnico.urls', namespace='tecnico')),
+    # url(r'^cliente/', include('apps.cliente.urls', namespace='cliente')),
     url(r'^proveedores/', Proveedores.as_view(), name='proveedores'),
     url(r'^tecnicos/', Tecnicos.as_view(), name='tecnicos'),
     url(r'^quienes-somos/', QuienesSomos.as_view(), name='quienes_somos'),
